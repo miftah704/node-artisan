@@ -1,0 +1,52 @@
+{
+  "name": "node-artisan",
+  "version": "1.0.0",
+  "description": "A command-line tool for generating various components in Node.js projects, similar to Laravel Artisan.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "artisan": "node src/commands/cli.js",
+    "start": "node index.js",
+    "build": "node build.js",
+    "lint": "eslint ./src",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "type": "module",
+  "author": "Miftah704",
+  "license": "MIT",
+  "keywords": [
+    "cli",
+    "node",
+    "artisan",
+    "generator",
+    "commander",
+    "chalk",
+    "command-line"
+  ],
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "figures": "^6.1.0",
+    "table": "^6.9.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "eslint": "^8.41.0",
+    "nodemon": "^3.0.1"
+  },
+  "bin": {
+    "artisan": "./src/commands/cli.js"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/node-artisan.git"
+  },
+  "bugs": {
+    "url": "https://github.com/username/node-artisan/issues"
+  },
+  "homepage": "https://github.com/username/node-artisan#readme"
+}
