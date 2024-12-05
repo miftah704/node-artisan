@@ -1,0 +1,19 @@
+# Node Modules
+node_modules/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.idea/
+.vscode/
+*.sublime-workspace
+*.swp
+
+# Typescript Cache
+*.tsbuildinfo
+
+# Testing Output
+coverage/
+*.lcov

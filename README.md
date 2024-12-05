@@ -40,7 +40,7 @@ node artisan make:controller UserController
 ### Available Commands
 Here is a list of commands you can use:
 
-![Available Commands](./src/screenshot/artisan-list.png)
+![Available Commands](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/artisan-list.png)
 
 | Command           | Description                                             |
 |-------------------|---------------------------------------------------------|
@@ -121,7 +121,8 @@ You will see output similar to the following:
 ────────────────────────────────────────────────────────────
 ```
 
-![Example Output for Controller Creation](./src/screenshot/make-artisan.png)
+![Example Output for Controller Creation](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-artisan.png)
+
 
 ## License
 This project is licensed under the MIT License.
