@@ -17,15 +17,7 @@ You can install Node Artisan locally in your project or globally for system-wide
 Run the following command to add Node Artisan as a project dependency:
 
 ```sh
-npm install node-artisan
-```
-
-### Global Installation
-
-Alternatively, install it globally:
-
-```sh
-npm install -g node-artisan
+npm install nodejs-artisan
 ```
 
 ## Usage
