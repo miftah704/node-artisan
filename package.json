@@ -45,10 +45,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/username/node-artisan.git"
+    "url": "git+https://github.com/miftah704/node-artisan.git"
   },
   "bugs": {
-    "url": "https://github.com/username/node-artisan/issues"
+    "url": "https://github.com/miftah704/node-artisan/issues"
   },
-  "homepage": "https://github.com/username/node-artisan#readme"
+  "homepage": "https://github.com/miftah704/node-artisan#readme"
 }
