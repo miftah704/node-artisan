@@ -1,12 +1,11 @@
 {
   "name": "nodejs-artisan",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A command-line tool for generating various components in Node.js projects, similar to Laravel Artisan.",
   "main": "lib/commands/cli.js",
   "scripts": {
     "build": "babel src --out-dir lib",
     "test": "jest",
-    "artisan": "node src/commands/cli.js",
     "start": "node index.js",
     "lint": "eslint ./src",
     "test:watch": "jest --watch",
@@ -39,7 +38,7 @@
     "nodemon": "^3.0.1"
   },
   "bin": {
-    "artisan": "src/commands/cli.js"
+    "artisan": "lib/commands/cli.js"
   },
   "engines": {
     "node": ">=14.0.0"

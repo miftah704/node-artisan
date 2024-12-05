@@ -11,8 +11,58 @@ import chalk from 'chalk'
 import figures from 'figures'
 import { table } from 'table'
 import { makeMiddleware } from './middleware.js'
+import fs from 'node:fs';
+import path from 'node:path';
 
 const program = new Command()
+
+program
+  .command('init')
+  .description('Initialize Artisan in the project root directory')
+  .action(() => {
+    const projectRoot = process.cwd();
+    const artisanFilePath = path.join(projectRoot, 'artisan.js');
+    const artisanContent = `#!/usr/bin/env node
+
+// Automatically resolve the path to the artisan CLI file
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const cliModule = async () => await import(require.resolve('nodejs-artisan/lib/commands/cli.js'));
+cliModule();
+`;
+
+    // Create 'artisan.js' file if it doesn't exist
+    if (!fs.existsSync(artisanFilePath)) {
+      fs.writeFileSync(artisanFilePath, artisanContent);
+      fs.chmodSync(artisanFilePath, '755');
+      console.log(chalk.green(`${figures.tick} Artisan initialized successfully!`));
+    } else {
+      console.log(chalk.yellow(`${figures.warning} 'artisan.js' file already exists in the project root.`));
+    }
+
+    // Update package.json to include 'bin' entry
+    const packageJsonPath = path.join(projectRoot, 'package.json');
+    if (fs.existsSync(packageJsonPath)) {
+      try {
+        const packageJsonContent = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+        
+        // Add bin entry if it doesn't exist
+        if (!packageJsonContent.bin) {
+          packageJsonContent.bin = {};
+        }
+
+        packageJsonContent.bin['artisan'] = './artisan.js';
+
+        // Write updated package.json back to disk
+        fs.writeFileSync(packageJsonPath, JSON.stringify(packageJsonContent, null, 2));
+        console.log(chalk.green(`${figures.tick} 'bin' entry added to package.json successfully!`));
+      } catch (error) {
+        console.error(chalk.red(`${figures.cross} Failed to update package.json: ${error.message}`));
+      }
+    } else {
+      console.log(chalk.red(`${figures.cross} package.json not found in the project root directory.`));
+    }
+  });
 
 program
   .command('list')
