@@ -1,11 +1,14 @@
 {
   "name": "nodejs-artisan",
-  "version": "1.2.1",
+  "version": "1.2.4",
   "description": "A command-line tool for generating various components in Node.js projects, similar to Laravel Artisan.",
-  "main": "lib/cli.js",
+  "main": "lib/index.js",
   "files": [
     "lib"
   ],
+  "exports": {
+    ".": "./lib/index.js"
+  },
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "babel src --out-dir lib && npx tsc --declaration --emitDeclarationOnly --outDir lib",
