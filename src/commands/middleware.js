@@ -1,58 +1,66 @@
-import path from 'path';
-import Command from '../utils/command.utils.js';
-import fs from 'fs';
-import chalk from 'chalk';
-import figures from 'figures';
+import path from 'path'
+import Command from '../utils/command.util.js'
+import fs from 'fs'
+import chalk from 'chalk'
+import figures from 'figures'
+import LogUtil from '../utils/logger.util.js'
 
-// Use process.cwd() to reference the user's project directory
-const userWorkingDir = process.cwd();
+// Get the current working directory of the user
+const userWorkingDir = process.cwd()
 
-export function makeMiddleware(name, functions = []) {
-  const parts = name.split('/');
-  const middlewareName = parts.pop();
-  
-  // Update folder path to be relative to the user's project directory
-  const folderPath = path.join(userWorkingDir, 'src', 'middleware', ...parts);
-  const fileName = Command.removeSuffixFromName(middlewareName, 'middleware');
-  const pascalClassName = Command.toPascalCase(fileName);
-  const kebabCaseName = Command.toKebabCase(fileName);
-  const filePath = path.join(folderPath, `${kebabCaseName}.middleware.ts`);
-  
-  // Create the dynamic route name
-  const routeName = `${fileName}Route`;
+/**
+ * Generates a middleware file with the given name.
+ *
+ * @param {string} name - The name of the middleware, including any nested folder structure.
+ * @param {Array<string>} functions - An array of function names (reserved for future use).
+ */
+export default function makeMiddleware(name, functions = []) {
+  // Parse the middleware name to determine folder and file structure
+  const parts = name.split('/')
+  const middlewareName = parts.pop() // Extract the middleware name
+
+  // Construct the folder path where the middleware will be created
+  const folderPath = path.join(userWorkingDir, 'src', 'middleware', ...parts)
+
+  // Standardize the file and class names
+  const fileName = Command.removeSuffixFromName(middlewareName, 'middleware') // Remove "middleware" suffix
+  const pascalClassName = Command.toPascalCase(fileName) // Convert to PascalCase for class naming
+  const kebabCaseName = Command.toKebabCase(fileName) // Convert to kebab-case for file naming
+
+  // Define the full file path for the middleware
+  const filePath = path.join(folderPath, `${kebabCaseName}.middleware.ts`)
+
+  // Create the dynamic route name based on the file name
+  const routeName = `${fileName}Route`
+
+  // Prepare the content of the middleware file
   const content = `import express from 'express'
 const ${routeName} = express()
 // Middleware functions can be added here
-export default ${routeName}`;
+export default ${routeName}`
 
-  const divider = chalk.gray(figures.line.repeat(60));
-  console.log(chalk.bold.blue(`\n${figures.info} [Middleware Generator]\n`));
-  console.log(chalk.bold(`✨ Summary:`));
-  console.log(`${chalk.green(figures.pointerSmall)} Class Name  : ${chalk.cyan(pascalClassName)}Route`);
-  console.log(`${chalk.green(figures.pointerSmall)} File Name   : ${chalk.cyan(kebabCaseName)}.middleware.ts`);
-  console.log(`${chalk.green(figures.pointerSmall)} Folder Path : ${chalk.cyan(folderPath)}`);
-  console.log(divider);
+  // Divider for log output
+  const divider = chalk.gray(figures.line.repeat(60))
+
+  // Log the summary of the operation
+  LogUtil.logSummary(pascalClassName, kebabCaseName, folderPath, 'middleware')
 
   // Handle folder creation
-  if (!fs.existsSync(folderPath)) {
-    fs.mkdirSync(folderPath, {
-      recursive: true
-    });
-    console.log(chalk.green(`${figures.tick} Folder created:`), chalk.blue.bold(folderPath));
-  } else {
-    console.log(chalk.yellow(`${figures.warning} Folder already exists:`), chalk.gray(folderPath));
+  const folderExists = fs.existsSync(folderPath) // Check if the folder exists
+  if (!folderExists) {
+    fs.mkdirSync(folderPath, { recursive: true }) // Create folder if it does not exist
   }
+  LogUtil.logFolderCreation(folderPath, !folderExists)
 
   // Handle file existence
   if (fs.existsSync(filePath)) {
-    console.log(chalk.red(`${figures.cross} File already exists:`), chalk.red.underline(filePath));
-    console.log(divider);
-    return;
+    // If the file already exists, log an error and exit
+    console.log(chalk.red(`${figures.cross} File already exists:`), chalk.red.underline(filePath))
+    console.log(divider)
+    return
   }
 
-  // Create the file
-  fs.writeFileSync(filePath, content);
-  console.log(chalk.green(`${figures.tick} Middleware created successfully!`));
-  console.log(chalk.cyan(`${figures.pointerSmall} File Location:`), chalk.blue.underline(filePath));
-  console.log(divider);
+  // Create the file with the generated content
+  fs.writeFileSync(filePath, content)
+  LogUtil.logHelperCreationSuccess(filePath, functions)
 }

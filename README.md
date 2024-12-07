@@ -1,20 +1,58 @@
 # Node Artisan
 
-Node Artisan is a command-line tool for generating various components in Node.js projects, inspired by Laravel's Artisan CLI. This tool helps developers quickly scaffold controllers, models, services, middleware, and other project files, making the development process faster and more efficient. This package is especially suitable for Express.js projects, making it easy to generate essential components for your backend.
+Node Artisan is a command-line tool for generating various components in Node.js projects, inspired by [Laravel's Artisan CLI](https://laravel.com). This tool helps developers quickly scaffold controllers, models, services, middleware, and other project files, making the development process faster and more efficient. It is particularly suited for Express.js projects, enabling easy generation of essential backend components.
+
+## Screenshots
+
+### Available Command List
+![Command List Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/artisan-list.png)
+
+### Initialize Artisan
+![Initialization Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-init.png)
+
+### Make a Controller
+![Make Controller Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-controller.png)
+
+### Make a Model
+![Make Model Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-model.png)
+
+### Make a Service
+![Make Service Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-service.png)
+
+### Make a Repository
+![Make Repository Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-repository.png)
+
+### Make a Utility
+![Make Utility Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-utility.png)
+
+### Make an Enum
+![Make Enum Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-enum.png)
+
+### Make a Type
+![Make Type Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-type.png)
+
+### Make a Validator
+![Make Validator Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-validator.png)
+
+### Make a Transformer
+![Make Transformer Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-transformer.png)
+
+### Make a Helper
+![Make Helper Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-helper.png)
 
 ## Features
 
-- Generate controllers, models, services, repositories, middleware, and transformers with ease.
-- Command structure similar to Laravel Artisan.
+- Generate controllers, models, services, repositories, middleware, and transformers effortlessly.
+- Command structure inspired by Laravel Artisan.
 - Simplifies repetitive tasks during project development.
 
 ## Installation
 
-You can install Node Artisan locally in your project or globally for system-wide use.
+You can install Node Artisan either locally in your project or globally for system-wide use.
 
 ### Local Installation
 
-Run the following command to add Node Artisan as a project dependency:
+To add Node Artisan as a project dependency, run:
 
 ```sh
 npm install nodejs-artisan
@@ -22,25 +60,30 @@ npm install nodejs-artisan
 
 ## Usage
 
-To initialize Node Artisan in your project, run the following command:
+To initialize Node Artisan in your project, run:
 
 ```sh
 npx artisan init
 ```
 
-After initializing, you can use Node Artisan with the following command:
+**Purpose:** This command enables you to use `node artisan` commands seamlessly by:
+
+1. Creating an `artisan.js` file in the root of your project.
+2. Automatically adding a `bin` entry for `artisan` in your `package.json`.
+
+Once initialized, you can use Node Artisan commands as follows:
 
 ```sh
 node artisan <command> <name>
 ```
 
-For example, to generate a controller named `UserController`, run:
+For example, to generate a controller named `UserController`, use:
 
 ```sh
 node artisan make:controller UserController
 ```
 
-Alternatively, you can directly use:
+Alternatively, you can use:
 
 ```sh
 npx artisan make:<command> <name>
@@ -48,105 +91,172 @@ npx artisan make:<command> <name>
 
 ### Available Commands
 
-Here is a list of commands you can use:
-
-| Command            | Description                                              |
-| ------------------ | -------------------------------------------------------- |
-| `list`             | List all available artisan commands                      |
-| `make:controller`  | Create a new controller in `src/controllers` directory   |
-| `make:enum`        | Create a new enum in `src/enums` directory               |
-| `make:middleware`  | Create a new middleware in `src/middleware` directory    |
-| `make:model`       | Create a new model in `src/models` directory             |
-| `make:transformer` | Create a new transformer in `src/transformers` directory |
-| `make:service`     | Create a new service in `src/services` directory         |
-| `make:repository`  | Create a new repository in `src/repositories` directory  |
-
-![Example Output for Controller Creation](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/artisan-list.png)
+| Command              | Description                                             |
+|----------------------|---------------------------------------------------------|
+| `list`               | List all available artisan commands                    |
+| `make:controller`    | Create a new controller in `src/controllers` directory  |
+| `make:enum`          | Create a new enum in `src/enums` directory              |
+| `make:middleware`    | Create a new middleware in `src/middleware` directory   |
+| `make:model`         | Create a new model in `src/models` directory            |
+| `make:transformer`   | Create a new transformer in `src/transformers` directory|
+| `make:service`       | Create a new service in `src/services` directory        |
+| `make:repository`    | Create a new repository in `src/repositories` directory |
 
 ### Command Details
 
-1. **Generate Controller**
+#### Generate Controller
 
-   ```sh
-   node artisan make:controller <ControllerName> index show update
+```sh
+node artisan make:controller <ControllerName> index show update
+```
+
+Creates a new controller file in the `controllers` folder.
+
+- **Basic Name:** Creates `controllers/<name>.controller.ts`.
+- **Nested Path:** Creates `controllers/<path>/<name>.controller.ts`.
+- **Function Names:** Adds specified methods to the class:
+
+```typescript
+static async index(req: Request, res: Response, next: NextFunction) {
+  try {
+    // Logic here
+  } catch (error) {
+    next(error);
+  }
+}
+
+static async show(req: Request, res: Response, next: NextFunction) {
+  try {
+    // Logic here
+  } catch (error) {
+    next(error);
+  }
+}
+
+static async update(req: Request, res: Response, next: NextFunction) {
+  try {
+    // Logic here
+  } catch (error) {
+    next(error);
+  }
+}
+```
+
+#### Generate Model
+
+```sh
+node artisan make:model <ModelName>
+```
+
+Creates a new model file in the `models` folder.
+
+**Recommendation:** Integrate your models with [Sutando ORM](https://sutando.org) for improved type safety and functionality.
+
+#### Generate Middleware
+
+```sh
+node artisan make:middleware <MiddlewareName>
+```
+
+Creates a new middleware file in the `middleware` folder.
+
+#### Generate Enum
+
+```sh
+node artisan make:enum <EnumName>
+```
+
+Creates a new enum file in the `enums` folder.
+
+#### Generate Transformer
+
+```sh
+node artisan make:transformer <TransformerName>
+```
+
+Creates a new transformer file in the `transformers` folder.
+
+**Purpose and Functionality:** Transformers serve as a formatting layer for API responses, similar to Laravel's resources. They allow you to structure and standardize the output of your APIs, ensuring that data returned to the client is consistently formatted and easy to consume.
+
+You only need to call the transformer without additional conditions:
+
+1. **List Data:**
+   ```typescript
+   const users = User.all();
+   UserShowTransformer.transform(users);
    ```
 
-   Creates a new controller file in the `controllers` folder.
-
-   - If you provide just the name (e.g., `Name`), it will create `controllers/name.controller.ts`.
-   - If you provide a nested path (e.g., `v1/sub/Name`), it will create `controllers/v1/sub/name.controller.ts`.
-   - If you provide function names (e.g., `index show update`), it will create the following methods inside the class:
-
-     ```typescript
-     static async index(req: Request, res: Response, next: NextFunction) {
-       try {
-       } catch (error) {
-         next(error);
-       }
-     }
-
-     static async show(req: Request, res: Response, next: NextFunction) {
-       try {
-       } catch (error) {
-         next(error);
-       }
-     }
-
-     static async update(req: Request, res: Response, next: NextFunction) {
-       try {
-       } catch (error) {
-         next(error);
-       }
-     }
-     ```
-
-2. **Generate Model**
-
-   ```sh
-   node artisan make:model <ModelName>
+2. **Single Data:**
+   ```typescript
+   const user = User.find(1);
+   UserShowTransformer.transform(user);
    ```
 
-   Creates a new model file in the `models` folder.
+The transformer will automatically handle formatting for both cases, ensuring consistent API responses.
 
-3. **Generate Middleware**
+**Example Implementation:**
 
-   ```sh
-   node artisan make:middleware <MiddlewareName>
+```typescript
+import { Transformer, Str } from 'nodejs-artisan';
+
+export default class UserShowTransformer extends Transformer {
+  /**
+   * Override the protected _format method
+   * @param {any} data - The input data
+   * @param {string} [_lang] - Optional language parameter
+   * @returns {Record<string, any> | null} - The formatted result
+   */
+  static override _format(data: any, _lang?: string): Record<string, any> | null {
+    return Str.attributes({
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      created_at: data.createdAt,
+      updated_at: data.updatedAt
+    });
+  }
+}
+```
+
+1. **List Data:**
+   ```typescript
+   const users = User.all();
+   UserShowTransformer.transform(users);
    ```
 
-   Creates a new middleware file in the `middleware` folder.
-
-4. **Generate Enum**
-
-   ```sh
-   node artisan make:enum <EnumName>
+2. **Single Data:**
+   ```typescript
+   const user = User.find(1);
+   UserShowTransformer.transform(user);
    ```
 
-   Creates a new enum file in the `enums` folder.
+The transformer will automatically handle formatting for both cases, ensuring consistent API responses.
 
-5. **Generate Transformer**
+#### Generate Service
 
-   ```sh
-   node artisan make:transformer <TransformerName>
-   ```
+```sh
+node artisan make:service <ServiceName>
+```
 
-   Creates a new transformer file in the `transformers` folder.
+Creates a new service file in the `services` folder.
 
-6. **Generate Service**
+#### Generate Repository
 
-   ```sh
-   node artisan make:service <ServiceName>
-   ```
+```sh
+node artisan make:repository <RepositoryName>
+```
 
-   Creates a new service file in the `services` folder.
+Creates a new repository file in the `repositories` folder.
 
-7. **Generate Repository**
+#### Generate Validator
 
-   ```sh
-   node artisan make:repository <RepositoryName>
-   ```
+```sh
+node artisan make:validator <ValidatorName>
+```
 
-   Creates a new repository file in the `repositories` folder.
+Creates a new validator file in the `validators` folder.
+
+**Recommendation:** Use [VineJS](https://vinejs.dev) for robust and extensible validation.
 
 ### Example Output
 
@@ -156,14 +266,14 @@ When running the `make:controller` command:
 node artisan make:controller UserController
 ```
 
-You will see output similar to the following:
+You will see output similar to:
 
 ```
 ℹ [Controller Generator]
 
 ✨ Summary:
-› Class Name  : UserController
-› File Name   : user.controller.ts
+› Class Name : UserController
+› File Name : user.controller.ts
 › Folder Path : ./src/controllers
 ────────────────────────────────────────────────────────────
 ✔ Folder created: ./src/controllers
@@ -173,13 +283,11 @@ You will see output similar to the following:
 ────────────────────────────────────────────────────────────
 ```
 
-![Example Output for Controller Creation](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-artisan.png)
-
 ## License
 
 This project is licensed under the MIT License.
 
 ## Author
 
-Created by Mivu704.
+Created by Miftah704.
 
