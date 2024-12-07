@@ -1,6 +1,6 @@
 {
   "name": "nodejs-artisan",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A command-line tool for generating various components in Node.js projects, similar to Laravel Artisan.",
   "main": "lib/cli.js",
   "files": [
