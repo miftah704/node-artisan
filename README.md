@@ -218,20 +218,6 @@ export default class UserShowTransformer extends Transformer {
 }
 ```
 
-1. **List Data:**
-   ```typescript
-   const users = User.all();
-   UserShowTransformer.transform(users);
-   ```
-
-2. **Single Data:**
-   ```typescript
-   const user = User.find(1);
-   UserShowTransformer.transform(user);
-   ```
-
-The transformer will automatically handle formatting for both cases, ensuring consistent API responses.
-
 #### Generate Service
 
 ```sh
