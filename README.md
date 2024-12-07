@@ -23,7 +23,7 @@ Node Artisan is a command-line tool for generating various components in Node.js
 ![Make Repository Screenshot](https://raw.githubusercontent.com/miftah704/nodejs-artisan/refs/heads/dev/src/screenshot/make-repository.png)
 
 ### Make a Utility
-![Make Utility Screenshot](https://raw.githubusercontent.com/miftah704/nodejs-artisan/refs/heads/dev/src/screenshot/make-utility.png)
+![Make Utility Screenshot](https://raw.githubusercontent.com/miftah704/nodejs-artisan/refs/heads/dev/src/screenshot/make-util.png)
 
 ### Make an Enum
 ![Make Enum Screenshot](https://raw.githubusercontent.com/miftah704/nodejs-artisan/refs/heads/dev/src/screenshot/make-enum.png)
