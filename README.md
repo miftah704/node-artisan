@@ -5,40 +5,40 @@ Node Artisan is a command-line tool for generating various components in Node.js
 ## Screenshots
 
 ### Available Command List
-![Command List Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/artisan-list.png)
+![Command List Screenshot](https://raw.githubusercontent.com/miftah704/nodejs-artisan/refs/heads/dev/src/screenshot/artisan-list.png)
 
 ### Initialize Artisan
-![Initialization Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-init.png)
+![Initialization Screenshot](https://raw.githubusercontent.com/miftah704/nodejs-artisan/refs/heads/dev/src/screenshot/make-init.png)
 
 ### Make a Controller
-![Make Controller Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-controller.png)
+![Make Controller Screenshot](https://raw.githubusercontent.com/miftah704/nodejs-artisan/refs/heads/dev/src/screenshot/make-controller.png)
 
 ### Make a Model
-![Make Model Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-model.png)
+![Make Model Screenshot](https://raw.githubusercontent.com/miftah704/nodejs-artisan/refs/heads/dev/src/screenshot/make-model.png)
 
 ### Make a Service
-![Make Service Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-service.png)
+![Make Service Screenshot](https://raw.githubusercontent.com/miftah704/nodejs-artisan/refs/heads/dev/src/screenshot/make-service.png)
 
 ### Make a Repository
-![Make Repository Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-repository.png)
+![Make Repository Screenshot](https://raw.githubusercontent.com/miftah704/nodejs-artisan/refs/heads/dev/src/screenshot/make-repository.png)
 
 ### Make a Utility
-![Make Utility Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-utility.png)
+![Make Utility Screenshot](https://raw.githubusercontent.com/miftah704/nodejs-artisan/refs/heads/dev/src/screenshot/make-utility.png)
 
 ### Make an Enum
-![Make Enum Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-enum.png)
+![Make Enum Screenshot](https://raw.githubusercontent.com/miftah704/nodejs-artisan/refs/heads/dev/src/screenshot/make-enum.png)
 
 ### Make a Type
-![Make Type Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-type.png)
+![Make Type Screenshot](https://raw.githubusercontent.com/miftah704/nodejs-artisan/refs/heads/dev/src/screenshot/make-type.png)
 
 ### Make a Validator
-![Make Validator Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-validator.png)
+![Make Validator Screenshot](https://raw.githubusercontent.com/miftah704/nodejs-artisan/refs/heads/dev/src/screenshot/make-validator.png)
 
 ### Make a Transformer
-![Make Transformer Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-transformer.png)
+![Make Transformer Screenshot](https://raw.githubusercontent.com/miftah704/nodejs-artisan/refs/heads/dev/src/screenshot/make-transformer.png)
 
 ### Make a Helper
-![Make Helper Screenshot](https://github.com/miftah704/nodejs-artisan/raw/main/src/screenshot/make-helper.png)
+![Make Helper Screenshot](https://raw.githubusercontent.com/miftah704/nodejs-artisan/refs/heads/dev/src/screenshot/make-helper.png)
 
 ## Features
 
