@@ -173,6 +173,10 @@ Generates:
 - `src/services/User.service.ts`
 - `src/repositories/User.repository.ts`
 
+
+**Recommendation:** Integrate your models with [Sutando ORM](https://sutando.org) for improved type safety and functionality.
+
+
 #### Generate Middleware
 
 ```
