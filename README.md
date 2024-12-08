@@ -1,5 +1,22 @@
 # Node Artisan
 
+![npm](https://img.shields.io/npm/dw/nodejs-artisan?style=for-the-badge)
+![npm](https://img.shields.io/npm/dt/nodejs-artisan?style=for-the-badge)
+![npm](https://img.shields.io/npm/v/nodejs-artisan?style=for-the-badge)
+![Node Current](https://img.shields.io/node/v/nodejs-artisan?style=for-the-badge)
+![license](https://img.shields.io/npm/l/nodejs-artisan?style=for-the-badge)
+![GitHub Tag](https://img.shields.io/github/v/tag/miftah704/nodejs-artisan?sort=date&style=for-the-badge)
+
+
+## ⭐ Support Us
+
+If you find this project helpful, consider giving it a **star** to show your support!
+
+[![GitHub stars](https://img.shields.io/github/stars/miftah704/nodejs-artisan?style=for-the-badge&logo=github)](https://github.com/miftah704/nodejs-artisan)
+
+[![Tweet](https://img.shields.io/badge/Tweet-%20Share%20on%20Twitter-1DA1F2?style=for-the-badge&logo=x&logoColor=white)](https://twitter.com/intent/tweet?text=Check+out+this+awesome+Node.js+tool!&url=https://github.com/miftah704/nodejs-artisan&hashtags=NodeJS,CLI) [![Share on Facebook](https://img.shields.io/badge/Share-Facebook-blue?style=for-the-badge&logo=facebook)](https://www.facebook.com/sharer/sharer.php?u=https://github.com/miftah704/nodejs-artisan)
+
+
 Node Artisan is a command-line tool for generating various components in Node.js projects, inspired by [Laravel's Artisan CLI](https://laravel.com). This tool helps developers quickly scaffold controllers, models, services, middleware, and other project files, making the development process faster and more efficient. It is particularly suited for Express.js projects, enabling easy generation of essential backend components.
 
 ## Screenshots
@@ -277,4 +294,11 @@ This project is licensed under the MIT License.
 
 ## Author
 
-Created by Miftah704.
+👤 **Created by:** [Miftah704](https://github.com/miftah704)  
+📧 **Email:** [miftahshidiq704@gmail.com](mailto:miftah704@gmail.com)   
+🔗 **LinkedIn:** [Miftah Shidiq](https://www.linkedin.com/in/miftahshidiq)  
+
+Feel free to connect for feedback, collaborations, or just to say hi!
+
+
+
