@@ -13,8 +13,8 @@
   },
   "include": [
     "src/index.js",
-    "src/utils/transformer.util.js",
-    "src/utils/str.util.js"
+    "src/examples/utils/transformer.util.js",
+    "src/examples/utils/str.util.js"
   ],
   "exclude": ["./lib", "./node_modules"]
 }
