@@ -24,12 +24,16 @@
   "license": "MIT",
   "keywords": [
     "cli",
+    "nodejs",
     "node",
+    "npm",
     "artisan",
     "generator",
     "commander",
     "chalk",
-    "command-line"
+    "command-line",
+    "artisan-command",
+    "express-js"
   ],
   "dependencies": {
     "chalk": "^5.3.0",
@@ -55,10 +59,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/miftah704/node-artisan.git"
+    "url": "git+https://github.com/miftah704/nodejs-artisan.git"
   },
   "bugs": {
-    "url": "https://github.com/miftah704/node-artisan/issues"
+    "url": "https://github.com/miftah704/nodejs-artisan/issues"
   },
-  "homepage": "https://github.com/miftah704/node-artisan#readme"
+  "homepage": "https://github.com/miftah704/nodejs-artisan#readme"
 }

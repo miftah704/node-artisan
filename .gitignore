@@ -10,6 +10,7 @@ Thumbs.db
 .vscode/
 *.sublime-workspace
 *.swp
+gitpush.*
 
 # Typescript Cache
 *.tsbuildinfo
