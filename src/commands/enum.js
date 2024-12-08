@@ -1,9 +1,9 @@
 import path from 'path'
-import Command from '../utils/command.util.js'
+import Command from '../examples/utils/command.util.js'
 import fs from 'fs'
 import chalk from 'chalk'
 import figures from 'figures'
-import LogUtil from '../utils/logger.util.js'
+import LogUtil from '../examples/utils/logger.util.js'
 
 // Get the current working directory of the user
 const userWorkingDir = process.cwd()

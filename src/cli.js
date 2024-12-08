@@ -77,10 +77,6 @@ cliModule();
     }
   })
 
-/**
- * Command: list
- * Description: List all available artisan commands
- */
 program
   .command('list')
   .description('List all available artisan commands')
@@ -88,16 +84,50 @@ program
     console.log(chalk.cyan(figures.info), chalk.bold('[Available Commands]'))
     console.log()
 
-    // Format commands as a table
-    const data = program.commands.map((cmd) => [
-      chalk.bold.yellow(cmd.name()),
-      chalk.whiteBright(cmd.description()),
-    ])
+    // Define commands
+    const commands = [
+      { name: 'init', description: 'Initialize Artisan in the project root directory' },
+      { name: 'list', description: 'List all available artisan commands' },
+      { name: '', description: '' }, // Empty row for spacing
+      ...program.commands
+        .filter((cmd) => cmd.name().startsWith('make:'))
+        .map((cmd) => ({
+          name: cmd.name(),
+          description:
+            `${cmd.description()}` +
+            (cmd.name() === 'make:model'
+              ? '\n' +
+                chalk.gray('Options:') +
+                '\n' +
+                chalk.green('  -c, --controller') +
+                ': Create a controller for the model' +
+                '\n' +
+                chalk.green('  -a, --all') +
+                ': Create a controller, service, and repository for the model'
+              : cmd.name() === 'make:controller'
+              ? '\n' +
+                chalk.gray('Options:') +
+                '\n' +
+                chalk.green('  -s, --service') +
+                ': Create a service for the controller' +
+                '\n' +
+                chalk.green('  -r, --repository') +
+                ': Create a repository for the controller' +
+                '\n' +
+                chalk.green('  -a, --all') +
+                ': Create a service and repository for the controller'
+              : ''),
+        })),
+    ]
 
+    // Ensure console width for dynamic terminal adjustment
+    const maxWidth = process.stdout.columns || 80 // Use terminal width or fallback to 80
+
+    // Table configuration
     const config = {
       columns: {
-        0: { alignment: 'left', wrapWord: true },
-        1: { alignment: 'left', wrapWord: true },
+        0: { alignment: 'left', width: Math.min(20, Math.floor(maxWidth * 0.25)) }, // 25% for the first column
+        1: { alignment: 'left', width: Math.min(80, Math.floor(maxWidth * 0.75)) }, // 75% for the second column
       },
       border: {
         topBody: chalk.gray('─'),
@@ -122,7 +152,14 @@ program
       drawHorizontalLine: (index, size) => index === 0 || index === 1 || index === size,
     }
 
-    const output = table([[chalk.bold('Command'), chalk.bold('Description')], ...data], config)
+    // Create table rows
+    const rows = [
+      [chalk.bold('Command'), chalk.bold('Description')],
+      ...commands.map((cmd) => [chalk.bold.yellow(cmd.name), cmd.description]),
+    ]
+
+    // Render table
+    const output = table(rows, config)
     console.log(output)
   })
 
@@ -130,7 +167,12 @@ program
 program
   .command('make:controller <name> [functions...]')
   .description('Create a new controller in src/controllers directory')
-  .action((name, functions = []) => makeController(name, functions))
+  .option('-s, --service', 'Create a service for the controller')
+  .option('-r, --repository', 'Create a repository for the controller')
+  .option('-a, --all', 'Create service and repository for the controller')
+  .action((name, functions = [], options) => {
+    makeController(name, functions, options)
+  })
 
 program
   .command('make:enum <name> [functions...]')
@@ -145,7 +187,17 @@ program
 program
   .command('make:model <name>')
   .description('Create a new model in src/models directory')
-  .action((name) => makeModel(name))
+  .option('-c, --controller', 'Create a controller for the model')
+  .option('-a, --all', 'Create all related files (controller, service, repository)')
+  .action((name, options) => {
+    // Check if `--all` is set, override other options
+    if (options.all) {
+      options.controller = true
+      options.service = true
+      options.repository = true
+    }
+    makeModel(name, options)
+  })
 
 program
   .command('make:transformer <name>')
