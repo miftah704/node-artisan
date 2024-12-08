@@ -15,7 +15,8 @@ export default class Transformer {
    * @returns {any | null} - The transformed data or null if input is invalid
    */
   static transform(data, lang) {
-    if (!data) return null
+    // Return null if data is null, undefined, or an empty array
+    if (!data || (Array.isArray(data) && data.length === 0)) return null
 
     // Handle array
     if (Array.isArray(data)) {
