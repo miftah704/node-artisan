@@ -1,9 +1,9 @@
 import path from 'path'
 import fs from 'fs'
-import Command from '../examples/utils/command.util.js'
+import Command from '../utils/command.util.js'
 import chalk from 'chalk'
 import figures from 'figures'
-import LogUtil from '../examples/utils/logger.util.js'
+import LogUtil from '../utils/logger.util.js'
 
 // Use process.cwd() to reference the user's project directory
 const userWorkingDir = process.cwd()

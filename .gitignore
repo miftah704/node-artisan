@@ -11,6 +11,7 @@ Thumbs.db
 *.sublime-workspace
 *.swp
 gitpush.*
+nodejs-artisan-*
 
 # Typescript Cache
 *.tsbuildinfo
