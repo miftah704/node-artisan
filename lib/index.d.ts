@@ -1,2 +1,2 @@
-export { default as Transformer } from "./examples/utils/transformer.util.js";
-export { default as Str } from "./examples/utils/str.util.js";
+export { default as Transformer } from "./utils/transformer.util.js";
+export { default as Str } from "./utils/str.util.js";
