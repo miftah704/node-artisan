@@ -15,9 +15,9 @@ export default class Str {
      */
     static lower(text: string | null): string | null;
     /**
-     * Converts an object into a structured attributes format
-     * @param {Record<string, any> | null} data - The input data
-     * @returns {{ attributes: Record<string, any> } | null} - The formatted attributes or null
+     * Converts an object into a structured attributes format.
+     * @param {Record<string, any> | null} data - The input data.
+     * @returns {{ attributes: Record<string, any> } | null} - The formatted attributes or null.
      */
     static attributes(data?: Record<string, any> | null): {
         attributes: Record<string, any>;
