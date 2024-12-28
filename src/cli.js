@@ -18,6 +18,7 @@ import makeType from './commands/type.js'
 import makeUtil from './commands/util.js'
 import makeHelper from './commands/helper.js'
 import makeValidator from './commands/validator.js'
+import makeRoute from './commands/route.js'
 
 const program = new Command()
 
@@ -233,6 +234,11 @@ program
   .command('make:validator <name>')
   .description('Create a new validator in src/validators directory')
   .action((name) => makeValidator(name))
+
+program
+  .command('make:route <name>')
+  .description('Create a new route in src/routes directory')
+  .action((name) => makeRoute(name))
 
 // Parse and execute commands
 program.parse(process.argv)

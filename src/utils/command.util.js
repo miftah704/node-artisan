@@ -39,7 +39,10 @@ class Command {
    * @returns {string} - The kebab-case version of the input string.
    */
   static toKebabCase(str) {
-    return str.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`).replace(/^-/, '')
+    return str
+      .replace(/([a-z])([A-Z])/g, '$1-$2') // Add dash between camelCase
+      .replace(/[\s_]+/g, '-') // Replace spaces and underscores with dash
+      .toLowerCase()
   }
 
   /**
@@ -62,10 +65,8 @@ class Command {
    */
   static toPascalCase(str) {
     return str
-      .replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) =>
-        index === 0 ? match.toUpperCase() : match.toLowerCase()
-      )
-      .replace(/\s+/g, '')
+      .replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase())
+      .replace(/^(.)/, (_, chr) => chr.toUpperCase())
   }
 
   /**
@@ -96,11 +97,8 @@ class Command {
    */
   static toCamelCase(str) {
     return str
-      .replace(/(?:^\w|[A-Z]|\b\w|\s+|\_|\-)/g, (match, index) =>
-        index === 0 ? match.toLowerCase() : match.toUpperCase()
-      )
-      .replace(/\s+/g, '')
-      .replace(/[_-]+/g, '')
+      .replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase())
+      .replace(/^(.)/, (_, chr) => chr.toLowerCase())
   }
 
   /**
