@@ -34,7 +34,8 @@
     "chalk",
     "command-line",
     "artisan-command",
-    "express-js"
+    "express-js",
+    "laravel"
   ],
   "dependencies": {
     "chalk": "^5.3.0",

@@ -40,7 +40,7 @@ export default function makeModel(name, options = {}) {
   const content = `import { Model } from 'sutando'
 
 export default class ${pascalClassName} extends Model {
-  // static tableName = ''
+  // tableName = ''
   // connection = ''
 }`
 

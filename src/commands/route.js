@@ -13,40 +13,37 @@ const userWorkingDir = process.cwd()
  *
  * @param {string} name - The name of the validator, including any nested folder structure.
  */
-export default function makeValidator(name) {
-  // Parse the validator name to determine folder and file structure
+export default function makeRoute(name) {
+  // Parse the route name to determine folder and file structure
   const parts = name.split('/')
-  const validatorName = parts.pop() // Extract the validator name
+  const routeName = parts.pop() // Extract the route name
 
-  // Construct the folder path where the validator will be created
-  const folderPath = path.join(userWorkingDir, 'src', 'validators', ...parts)
+  // Construct the folder path where the route will be created
+  const folderPath = path.join(userWorkingDir, 'src', 'routes', ...parts)
 
   // Standardize the file and class names
-  const fileName = Command.removeSuffixFromName(validatorName, 'validator') // Remove "validator" suffix
+  const fileName = Command.removeSuffixFromName(routeName, 'route') // Remove "route" suffix
   const camelCase = Command.toCamelCase(fileName) // Convert to PascalCase for class naming
   const kebabCaseName = Command.toKebabCase(fileName) // Convert to kebab-case for file naming
 
-  // Define the full file path for the validator
-  const filePath = path.join(folderPath, `${kebabCaseName}.validator.ts`)
+  // Define the full file path for the route
+  const filePath = path.join(folderPath, `${kebabCaseName}.route.ts`)
 
-  // Prepare the content of the validator file
-  const content = `import vine, { SimpleMessagesProvider } from '@vinejs/vine'
+  // Prepare the content of the route file
+  const content = `import { Router } from 'express'
   
-const ${camelCase}Validator = vine.compile(
-  vine.object({
-    //
-  })
-)
+const ${camelCase}Route = Router()
 
-${camelCase}Validator.messagesProvider = new SimpleMessagesProvider()
-export default ${camelCase}Validator
+// ${camelCase}Route.get('/mivu', mivuMiddleware, MivuController.index)
+
+export default ${camelCase}Route
 `
 
   // Divider for log output
   const divider = chalk.gray(figures.line.repeat(60))
 
   // Log the summary of the operation
-  LogUtil.logSummary(camelCase, kebabCaseName, folderPath, 'validator')
+  LogUtil.logSummary(camelCase, kebabCaseName, folderPath, 'route')
 
   // Handle folder creation
   const folderExists = fs.existsSync(folderPath) // Check if the folder exists

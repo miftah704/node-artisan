@@ -134,6 +134,7 @@ npx artisan make:<command> <name>
 | `make:util`          | Create a new util in `src/utils` directory              |
 | `make:helper`        | Create a new helper in `src/helpers` directory          |
 | `make:validator`     | Create a new validator in `src/validators` directory    |
+| `make:route`        | Create a new route in `src/routes` directory            |
 
 
 ### Command Details
