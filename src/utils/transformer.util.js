@@ -18,6 +18,11 @@ export default class Transformer {
     // Return null if data is null, undefined, or an empty array
     if (!data || (Array.isArray(data) && data.length === 0)) return null
 
+    // Handle Collection
+    if (this.isCollection(data)) {
+      return data.items.map((item) => this.transformSingle(item, lang))
+    }
+
     // Handle array
     if (Array.isArray(data)) {
       return data.map((item) => this.transformSingle(item, lang))
@@ -55,6 +60,15 @@ export default class Transformer {
    */
   static generateHash(data, lang) {
     return JSON.stringify(data) // Simple hashing using JSON.stringify
+  }
+
+  /**
+   * Check if the data is a Collection.
+   * @param {any} data - The input data
+   * @returns {boolean} - True if the data is a Collection
+   */
+  static isCollection(data) {
+    return data && typeof data === 'object' && 'items' in data && Array.isArray(data.items)
   }
 
   /**

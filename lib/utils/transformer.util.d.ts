@@ -29,6 +29,12 @@ export default class Transformer {
      */
     static generateHash(data: any, lang?: string): string;
     /**
+     * Check if the data is a Collection.
+     * @param {any} data - The input data
+     * @returns {boolean} - True if the data is a Collection
+     */
+    static isCollection(data: any): boolean;
+    /**
      * Protected method for formatting data.
      * Subclasses must override this.
      * @param {any} data - The input data

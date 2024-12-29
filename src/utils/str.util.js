@@ -25,17 +25,32 @@ export default class Str {
     }
     return text.toLowerCase()
   }
-
   /**
-   * Converts an object into a structured attributes format
-   * @param {Record<string, any> | null} data - The input data
-   * @returns {{ attributes: Record<string, any> } | null} - The formatted attributes or null
+   * Converts an object into a structured attributes format.
+   * @param {Record<string, any> | null} data - The input data.
+   * @returns {{ attributes: Record<string, any> } | null} - The formatted attributes or null.
    */
   static attributes(data = null) {
-    return data
-      ? {
-          attributes: { ...data },
-        }
-      : null
+    // Periksa jika data null atau undefined
+    if (data === null || data === undefined) {
+      return null
+    }
+
+    // Pastikan data adalah objek, jika tidak return null
+    if (typeof data !== 'object' || Array.isArray(data)) {
+      return null
+    }
+
+    // Periksa apakah ada setidaknya satu properti valid
+    const hasValidProperties = Object.values(data).some(
+      (value) => value !== undefined && value !== null
+    )
+    if (!hasValidProperties) {
+      return null
+    }
+
+    return {
+      attributes: { ...data },
+    }
   }
 }
